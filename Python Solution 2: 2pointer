@@ -1,0 +1,20 @@
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        Lptr = 0
+        Rptr = len(s)-1
+        while Lptr <= Rptr:
+            while Lptr < Rptr and not self.isAlphaNumeric(s[Lptr]):
+                Lptr = Lptr+1
+            while Rptr > Lptr and not self.isAlphaNumeric(s[Rptr]):
+                Rptr = Rptr-1
+            if s[Lptr].lower() != s[Rptr].lower():
+                return False
+            Lptr = Lptr + 1
+            Rptr = Rptr - 1
+        return True
+    
+    def isAlphaNumeric(self, c):
+        if ord('A') <= ord(c) <= ord('Z') or ord('a') <= ord(c) <= ord('z') or ord('0') <= ord(c) <= ord('9'):
+            return True
+        else:
+            return False
